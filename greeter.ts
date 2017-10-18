@@ -1,25 +1,18 @@
 //接口 类
-class Student {
-    fullName: string;
-    constructor(public firstName, public middleInitial, public lastName) {
-        this.fullName = firstName + " " + middleInitial + " " + lastName;
+interface SquareConfig {
+    color?: string;
+    width?: number;
+}
+
+function createSquare(config: SquareConfig): {color: string; area: number} {
+    let newSquare = {color: "white", area: 100};
+    if (config.color) {
+        newSquare.color = config.color;
     }
+    if (config.width) {
+        newSquare.area = config.width * config.width;
+    }
+    return newSquare;
 }
 
-interface Person {
-    firstName: string;
-    lastName: string;
-}
-
-function greeter(person : Person) {
-    return "Hello, " + person.firstName + " " + person.lastName;
-}
-
-var user = new Student("Jane", "M.", "User");
-
-document.body.innerHTML = greeter(user);
-
-enum Color {Red = 1, Green = 4, Blue}
-let colorName: string = Color[4];
-
-alert(colorName);
+let mySquare = createSquare({color: "black"});

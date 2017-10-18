@@ -1,23 +1,11 @@
-//接口 类
-var Student = (function () {
-    function Student(firstName, middleInitial, lastName) {
-        this.firstName = firstName;
-        this.middleInitial = middleInitial;
-        this.lastName = lastName;
-        this.fullName = firstName + " " + middleInitial + " " + lastName;
+function createSquare(config) {
+    var newSquare = { color: "white", area: 100 };
+    if (config.color) {
+        newSquare.color = config.color;
     }
-    return Student;
-}());
-function greeter(person) {
-    return "Hello, " + person.firstName + " " + person.lastName;
+    if (config.width) {
+        newSquare.area = config.width * config.width;
+    }
+    return newSquare;
 }
-var user = new Student("Jane", "M.", "User");
-document.body.innerHTML = greeter(user);
-var Color;
-(function (Color) {
-    Color[Color["Red"] = 1] = "Red";
-    Color[Color["Green"] = 4] = "Green";
-    Color[Color["Blue"] = 5] = "Blue";
-})(Color || (Color = {}));
-var colorName = Color[4];
-alert(colorName);
+var mySquare = createSquare({ color: "black" });
